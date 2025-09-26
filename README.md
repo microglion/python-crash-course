@@ -26,8 +26,12 @@ Taking a structured approach to build solid fundamentals:
 - Restaurant/User/Admin classes with inheritance and composition
 - Module organization and imports
 
-### Chapter 10: Files 🔄  
-- File handling and data persistence
+### Chapter 10: Files ✅
+- File handling with pathlib and text processing
+- Reading and manipulating large datasets (pi million digits)
+- String operations: splitlines(), lstrip(), slicing
+- Pattern searching in text data
+- Working with Claude Code for interactive development and testing
 
 ## Next Steps
 Complete crash course foundations → Apply to chess projects → Seek development opportunities
