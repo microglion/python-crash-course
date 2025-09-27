@@ -1,9 +1,8 @@
 from pathlib import Path
 
-
-path = Path('pi_digits.txt')
+path = Path('learningPython.txt')
 contents = path.read_text()
 
 
 for line in contents.splitlines():
-    print(line)
+    print(line.replace('Python', 'C'))
