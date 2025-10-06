@@ -40,6 +40,9 @@ Taking a structured approach to build solid fundamentals:
 - Text analysis and word counting in large literature files
 - Code simplification techniques (removing temporary variables)
 - String replacement and manipulation methods
+- JSON data storage with json.dumps() and json.loads()
+- User data persistence across program runs (favorite number, user profiles)
+- User verification and authentication patterns
 
 ## Next Steps
 Complete crash course foundations → Apply to chess projects → Seek development opportunities
