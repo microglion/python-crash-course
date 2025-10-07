@@ -32,8 +32,6 @@ Taking a structured approach to build solid fundamentals:
 - String operations: splitlines(), lstrip(), slicing
 - Pattern searching in text data
 - Working with Claude Code for interactive development and testing
-
-**Extended Session Progress:**
 - Writing to files with write_text() method
 - User input collection and file persistence (Guest/GuestBook exercises)
 - Exception handling: ZeroDivisionError, ValueError, FileNotFoundError
@@ -43,6 +41,11 @@ Taking a structured approach to build solid fundamentals:
 - JSON data storage with json.dumps() and json.loads()
 - User data persistence across program runs (favorite number, user profiles)
 - User verification and authentication patterns
+
+### Chapter 11: Testing Your Code 🚧
+- Introduction to pytest and unit testing
+- Writing test functions and assertions
+- Testing functions with pytest
 
 ## Next Steps
 Complete crash course foundations → Apply to chess projects → Seek development opportunities
