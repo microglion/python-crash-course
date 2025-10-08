@@ -43,9 +43,13 @@ Taking a structured approach to build solid fundamentals:
 - User verification and authentication patterns
 
 ### Chapter 11: Testing Your Code 🚧
-- Introduction to pytest and unit testing
-- Writing test functions and assertions
-- Testing functions with pytest
+- Setting up pytest and test environment
+- Writing test functions with assertions
+- Testing function return values (name formatting, city/country formatting)
+- Using optional parameters in functions and testing both cases
+- Test-driven development: making tests fail, then fixing code
+- Handling string formatting issues (spacing, capitalization with .title())
+- Running pytest from command line and interpreting test results
 
 ## Next Steps
 Complete crash course foundations → Apply to chess projects → Seek development opportunities
