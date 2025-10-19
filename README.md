@@ -42,7 +42,7 @@ Taking a structured approach to build solid fundamentals:
 - User data persistence across program runs (favorite number, user profiles)
 - User verification and authentication patterns
 
-### Chapter 11: Testing Your Code 🚧
+### Chapter 11: Testing Your Code ✅
 - Setting up pytest and test environment
 - Writing test functions with assertions
 - Testing function return values (name formatting, city/country formatting)
@@ -51,5 +51,24 @@ Taking a structured approach to build solid fundamentals:
 - Handling string formatting issues (spacing, capitalization with .title())
 - Running pytest from command line and interpreting test results
 
+### Part 2: Project 1 - Alien Invasion 🎮 (In Progress)
+**Game Development with Pygame**
+- Setting up game window and display with pygame
+- Implementing ship controls and movement
+- Creating bullet firing system with sprite groups
+- Building alien fleet with collision detection
+- Game state management (active/inactive states)
+- UI elements: clickable Play button, mouse event handling
+- Lives system and game over logic
+- Multiple levels with dynamic difficulty scaling
+- Key concepts learned:
+  - Object-oriented game design
+  - Event handling (keyboard and mouse)
+  - Sprite groups for managing game objects
+  - Collision detection (ship-alien, bullet-alien)
+  - Game state management
+  - Dynamic settings that change during gameplay
+  - Common debugging: method calls require parentheses `()`
+
 ## Next Steps
-Complete crash course foundations → Apply to chess projects → Seek development opportunities
+Complete Alien Invasion project → Continue with remaining projects → Apply to chess projects → Seek development opportunities
