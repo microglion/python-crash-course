@@ -61,13 +61,26 @@ Taking a structured approach to build solid fundamentals:
 - UI elements: clickable Play button, mouse event handling
 - Lives system and game over logic
 - Multiple levels with dynamic difficulty scaling
+- **Difficulty selection system** (Exercise 14-4):
+  - Toggle menu with Easy/Medium/Hard buttons
+  - Visual feedback with color-coded buttons
+  - Dynamic text updates showing selected difficulty
+  - Difficulty settings applied to game speed/behavior
+- **Scoring system**:
+  - Score tracking and display
+  - Points awarded for alien destruction
+  - Score updates rendered to screen
 - Key concepts learned:
   - Object-oriented game design
   - Event handling (keyboard and mouse)
   - Sprite groups for managing game objects
   - Collision detection (ship-alien, bullet-alien)
-  - Game state management
+  - Game state management with multiple flags
   - Dynamic settings that change during gameplay
+  - UI state management (toggling menus, visual feedback)
+  - Button positioning and text rendering with pygame
+  - Text surface updates (`_prep_msg()` pattern)
+  - Understanding `screen.blit()` for rendering surfaces
   - Common debugging: method calls require parentheses `()`
 
 ## Next Steps

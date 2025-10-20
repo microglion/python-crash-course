@@ -74,6 +74,8 @@ Keep git commits simple and focused:
 - Ask for explanations when concepts are unclear
 - Practice variations of exercises to reinforce learning
 - Build on previous concepts rather than treating each exercise in isolation
+- Debug positioning issues systematically (e.g., text surfaces need repositioning when rects move)
+- Use `elif` for mutually exclusive conditions (better practice and efficiency)
 
 ## Why This Method Works
 1. **Active engagement** - Writing code yourself builds understanding

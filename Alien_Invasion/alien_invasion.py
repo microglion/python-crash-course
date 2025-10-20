@@ -7,6 +7,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from button import Button
+from scoreboard import Scoreboard
 #from star import Star
 #from random import randint
 
@@ -25,7 +26,9 @@ class AlienInvasion:
             self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
         #Create an instance to store game statistics.
+        #and create a scoreboard.
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -34,9 +37,36 @@ class AlienInvasion:
         self._create_fleet()
         #Start Alien invasion in an inactive state.
         self.game_active = False
+        self.show_difficulty_menu = False
+        self.chosen_difficulty = 'medium' #default difficulty
 
         #Make the Play button.
         self.play_button = Button(self, "Play")
+
+        """Make the difficulty buttons"""
+        self.difficulty_button = Button(self, "Set Difficulty")
+        self.difficulty_button.rect.top = self.play_button.rect.bottom + 30
+        #re-center the text on repositioned button
+        self.difficulty_button.msg_image_rect.center = self.difficulty_button.rect.center
+
+        #make and position other difficulty buttons
+        y_position = self.difficulty_button.rect.bottom + 20
+
+        self.easy_difficulty_button = Button(self, "Easy")
+        self.easy_difficulty_button.rect.centerx = self.screen.get_rect().centerx - 220
+        self.easy_difficulty_button.rect.top = y_position
+        self.easy_difficulty_button.msg_image_rect.center = self.easy_difficulty_button.rect.center
+
+        self.medium_difficulty_button = Button(self, "Medium")
+        self.medium_difficulty_button.rect.centerx = self.screen.get_rect().centerx 
+        self.medium_difficulty_button.rect.top = y_position
+        self.medium_difficulty_button.msg_image_rect.center = self.medium_difficulty_button.rect.center
+
+        self.hard_difficulty_button = Button(self, "Hard")
+        self.hard_difficulty_button.rect.centerx = self.screen.get_rect().centerx + 220
+        self.hard_difficulty_button.rect.top = y_position
+        self.hard_difficulty_button.msg_image_rect.center = self.hard_difficulty_button.rect.center
+
 
     def run_game(self):
         """start the main loop for the game."""
@@ -60,6 +90,9 @@ class AlienInvasion:
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     self._check_play_button(mouse_pos)
+                    self._check_difficulty_button(mouse_pos)
+                    self._check_difficulty_level_buttons(mouse_pos)
+
                 elif event.type == pygame.KEYDOWN:
                     self._check_keydown_events(event)
                 elif event.type == pygame.KEYUP:
@@ -69,9 +102,42 @@ class AlienInvasion:
         """Start a new game when the player clicks Play."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
-            self.settings.initialize_dynamic_settings()
+            self.settings.initialize_dynamic_settings(self.chosen_difficulty)
             self._start_game()
-            
+            #reset the game statistics
+            self.stats.reset_stats()
+            self.sb.prep_score()
+    
+    def _check_difficulty_button(self, mouse_pos):
+        """Allow player to pick difficulty level."""
+        button_clicked = self.difficulty_button.rect.collidepoint(mouse_pos)
+        if button_clicked and not self.game_active:
+            self.show_difficulty_menu = not self.show_difficulty_menu #toggle the menu 
+    
+    def _check_difficulty_level_buttons(self, mouse_pos):
+        """Handle clicks on Easy, medium and hard buttons."""
+        if self.show_difficulty_menu and not self.game_active:
+            if self.easy_difficulty_button.rect.collidepoint(mouse_pos):
+                self._set_difficulty('easy')
+                self.difficulty_button.button_color = (0,200,0) #green for easy
+                self.difficulty_button._prep_msg('EASY') #change text to EASY
+                self.show_difficulty_menu = False
+            elif self.medium_difficulty_button.rect.collidepoint(mouse_pos):
+                self._set_difficulty('medium')
+                self.difficulty_button.button_color = (200,200,0) #yellow for medium
+                self.difficulty_button._prep_msg('MEDIUM') #change text to medium
+                self.show_difficulty_menu = False
+            elif self.hard_difficulty_button.rect.collidepoint(mouse_pos):
+                self._set_difficulty('hard')
+                self.difficulty_button.button_color = (200,0,0) #red for hard 
+                self.difficulty_button._prep_msg('HARD') #change text to EASY
+                self.show_difficulty_menu = False
+    
+    def _set_difficulty(self, level):
+        """Store the chosen difficulty."""
+        self.chosen_difficulty = level  # Just store it, apply it later        
+              
+
     def _start_game(self):
         #Reset the game statistics.
         self.stats.reset_stats()
@@ -132,6 +198,12 @@ class AlienInvasion:
         #Remove any bullets and aliens that have collided
         collisions = pygame.sprite.groupcollide(self.bullets, 
                                                 self.aliens, True, True)
+        
+        if collisions:   
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.sb.prep_score()
+
         if not self.aliens:
             # Destroy existing bullets and create a new fleet.
             self.bullets.empty()
@@ -189,9 +261,19 @@ class AlienInvasion:
         self.ship.blitme()
         self.aliens.draw(self.screen)
 
+        #Draw the score information.
+        self.sb.show_score()
+
         #Draw the play button if the game is inactive.
         if not self.game_active:
             self.play_button.draw_button()
+            self.difficulty_button.draw_button()
+
+            #draw difficulty menu if menu showing
+            if self.show_difficulty_menu:
+                self.easy_difficulty_button.draw_button()
+                self.medium_difficulty_button.draw_button()
+                self.hard_difficulty_button.draw_button()
 
         pygame.display.flip()
 
