@@ -68,12 +68,16 @@ Keep git commits simple and focused:
 - Handle exceptions appropriately (FileNotFoundError, ValueError, etc.)
 - Use appropriate data types (float vs int for calculations)
 - Follow Python naming conventions
+- Always call methods with parentheses - referencing vs calling is a common bug
+- Test code immediately to catch silent failures (e.g., uncalled methods)
 
 ### Learning Efficiency
 - Test code immediately after writing
 - Ask for explanations when concepts are unclear
 - Practice variations of exercises to reinforce learning
 - Build on previous concepts rather than treating each exercise in isolation
+- Game development projects provide excellent OOP practice
+- Debugging your own code builds problem-solving skills faster than copy-paste
 
 ## Why This Method Works
 1. **Active engagement** - Writing code yourself builds understanding
