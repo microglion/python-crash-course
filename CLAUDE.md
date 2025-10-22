@@ -78,6 +78,8 @@ Keep git commits simple and focused:
 - Build on previous concepts rather than treating each exercise in isolation
 - Game development projects provide excellent OOP practice
 - Debugging your own code builds problem-solving skills faster than copy-paste
+- Debug positioning issues systematically (e.g., text surfaces need repositioning when rects move)
+- Use `elif` for mutually exclusive conditions (better practice and efficiency)
 
 ## Why This Method Works
 1. **Active engagement** - Writing code yourself builds understanding
