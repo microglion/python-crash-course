@@ -24,4 +24,6 @@ for value in poss_results:
 title = "Results of Rolling two D6 Dice 1000 times"
 labels={'x':'Result','y':'Frequency of Result'}
 fig = px.bar(x=poss_results,y=frequencies, title=title, labels=labels)
+#Further customise chart
+fig.update_layout(xaxis_dtick=1)
 fig.show()

@@ -1,0 +1,35 @@
+from die import Die
+import plotly.express as px
+
+
+#create three D6 dice.
+die_1 = Die()
+die_2 = Die()
+die_3 = Die()
+
+#Make some rolls and store results in a list.
+results = []
+for roll_num in range(50_000_000):
+    result = die_1.roll() + die_2.roll() + die_3.roll()
+    results.append(result)
+    #Print progress every 5 million rolls
+    if (roll_num + 1) % 5_000_000 == 0:
+        print(f"Completed {roll_num + 1:,} rolls...")
+
+#Analyse the results.
+print("Rolling complete! Now analyzing frequencies...")
+frequencies = []
+max_result = die_1.num_sides + die_2.num_sides +die_3.num_sides
+poss_results = range(3,max_result+1)
+for value in poss_results:
+    #print(f"Counting frequency for result {value}...")
+    frequency = results.count(value)
+    frequencies.append(frequency)
+
+#Visualise the results. 
+title = "Results of Rolling three D6 dice 50,000,000 times"
+labels={'x':'Result','y':'Frequency of Result'}
+fig = px.bar(x=poss_results,y=frequencies, title=title, labels=labels)
+#Further customise chart
+fig.update_layout(xaxis_dtick=1)
+fig.write_html('dice_visual_3_d6.html')
