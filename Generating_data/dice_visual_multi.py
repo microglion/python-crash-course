@@ -8,18 +8,10 @@ die_2 = Die()
 
 #Make some rolls and store results in a list.
 results = [die_1.roll() * die_2.roll() for roll_num in range(5_000_000)]
-    # Print progress every 500k rolls
-if (roll_num + 1) % 500_000 == 0:
-    print(f"Completed {roll_num + 1:,} rolls...")
 
-#Analyse the results.
-print("Rolling complete! Now analyzing frequencies...")
-frequencies = []
 max_result = die_1.num_sides * die_2.num_sides
 poss_results = range(1,max_result+1)
-for value in poss_results:
-    frequency = results.count(value)
-    frequencies.append(frequency)
+frequencies = [results.count(value) for value in poss_results]
 
 #Visualise the results. 
 title = "Results of Rolling two D6 Dice and multiplying values 5,000,000 times"
