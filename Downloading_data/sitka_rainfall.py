@@ -27,7 +27,7 @@ for row in reader:
 #Plot the high and low temperatures.
 plt.style.use('seaborn-v0_8')
 fig,ax = plt.subplots()
-ax.plot(dates, precipitation, color='blue',alpha=0.5)
+ax.bar(dates, precipitation, color='blue', alpha=0.7, width=1)
 
 
 #Format plot.

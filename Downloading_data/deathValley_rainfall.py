@@ -16,7 +16,7 @@ dates = []
 for row in reader:
     current_date = datetime.strptime(row[2],'%Y-%m-%d')
     try:
-        current_prec = float(row[5])
+        current_prec = float(row[3])
     except ValueError:
         print(f"Data missing for {current_date}")
     else:
@@ -35,7 +35,7 @@ ax.set_title("Daily precipitation, Death Valley,CA, 2021, fontsize=24")
 ax.set_xlabel('', fontsize=16)
 fig.autofmt_xdate()
 ax.set_ylabel("Precipitation (\")", fontsize=16)
-ax.set_ylim(0,0.03)
+ax.set_ylim(0,0.8)
 ax.tick_params(labelsize=16)
 
 plt.show()
